@@ -1,3 +1,8 @@
+@use "mixins/border-radius" as *;
+@use "mixins/box-shadow" as *;
+@use "mixins/breakpoints" as *;
+@use "variables" as *;
+
 //
 // Base styles
 //
@@ -91,7 +96,7 @@
 
 .card-link {
   &:hover {
-    text-decoration: if($link-hover-decoration == underline, none, null);
+    text-decoration: if(sass($link-hover-decoration == underline): none);
   }
 
   + .card-link {

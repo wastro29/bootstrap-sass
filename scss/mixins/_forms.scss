@@ -1,15 +1,22 @@
+@use "../functions/escape-svg" as *;
+@use "../functions/math" as *;
+@use "../mixins/border-radius" as *;
+@use "../mixins/box-shadow" as *;
+@use "../vendor/rfs" as *;
+@use "../variables" as *;
+
 // This mixin uses an `if()` technique to be compatible with Dart Sass
 // See https://github.com/sass/sass/issues/1873#issuecomment-152293725 for more details
 
 // scss-docs-start form-validation-mixins
 @mixin form-validation-state-selector($state) {
   @if ($state == "valid" or $state == "invalid") {
-    .was-validated #{if(&, "&", "")}:#{$state},
-    #{if(&, "&", "")}.is-#{$state} {
+    .was-validated #{if(sass(&): "&"; else: "")}:#{$state},
+    #{if(sass(&): "&"; else: "")}.is-#{$state} {
       @content;
     }
   } @else {
-    #{if(&, "&", "")}.is-#{$state} {
+    #{if(sass(&): "&"; else: "")}.is-#{$state} {
       @content;
     }
   }

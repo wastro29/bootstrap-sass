@@ -1,3 +1,12 @@
+@use "../functions/escape-svg" as *;
+@use "../mixins/border-radius" as *;
+@use "../mixins/box-shadow" as *;
+@use "../mixins/color-mode" as *;
+@use "../mixins/transition" as *;
+@use "../vendor/rfs" as *;
+@use "../variables" as *;
+@use "../variables-dark" as *;
+
 // Select
 //
 // Replaces the browser default select with a custom one, mostly pulled from

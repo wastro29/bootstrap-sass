@@ -1,10 +1,9 @@
-@import "mixins/banner";
-@include bsBanner(Reboot);
-
-@import "functions";
-@import "variables";
-@import "variables-dark";
-@import "maps";
-@import "mixins";
-@import "root";
-@import "reboot";
+@forward "variables" with (
+  $boom: "Reboot" !default,
+);
+@forward "variables-dark";
+@forward "functions";
+@forward "maps";
+@forward "mixins";
+@forward "root";
+@forward "reboot";

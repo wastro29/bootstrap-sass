@@ -1,24 +1,22 @@
-@import "mixins/banner";
-@include bsBanner(Grid);
-
 $include-column-box-sizing: true !default;
+@forward "variables" with (
+  $boom: "Grid" !default,
+);
+@forward "variables-dark";
+@forward "maps";
 
-@import "functions";
-@import "variables";
-@import "variables-dark";
-@import "maps";
+@forward "mixins/breakpoints";
+@forward "mixins/container";
+@forward "mixins/grid";
+@forward "mixins/utilities";
 
-@import "mixins/breakpoints";
-@import "mixins/container";
-@import "mixins/grid";
-@import "mixins/utilities";
+@forward "vendor/rfs";
 
-@import "vendor/rfs";
+@forward "containers";
+@forward "grid";
 
-@import "containers";
-@import "grid";
-
-@import "utilities";
+@use "utilities" as *;
+@use "functions" as *;
 // Only use the utilities we need
 // stylelint-disable-next-line scss/dollar-variable-default
 $utilities: map-get-multiple(
@@ -59,4 +57,4 @@ $utilities: map-get-multiple(
   )
 );
 
-@import "utilities/api";
+@use "utilities/api";

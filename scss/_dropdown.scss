@@ -1,3 +1,12 @@
+@use "sass:map";
+@use "mixins/border-radius" as *;
+@use "mixins/box-shadow" as *;
+@use "mixins/breakpoints" as *;
+@use "mixins/caret" as *;
+@use "mixins/gradients" as *;
+@use "vendor/rfs" as *;
+@use "variables" as *;
+
 // The dropdown wrapper (`<div>`)
 .dropup,
 .dropend,
@@ -85,7 +94,7 @@
 // We deliberately hardcode the `bs-` prefix because we check
 // this custom property in JS to determine Popper's positioning
 
-@each $breakpoint in map-keys($grid-breakpoints) {
+@each $breakpoint in map.keys($grid-breakpoints) {
   @include media-breakpoint-up($breakpoint) {
     $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
 
@@ -180,7 +189,7 @@
   font-weight: $font-weight-normal;
   color: var(--#{$prefix}dropdown-link-color);
   text-align: inherit; // For `<button>`s
-  text-decoration: if($link-decoration == none, null, none);
+  text-decoration: if(not sass($link-decoration == none): none);
   white-space: nowrap; // prevent links from randomly breaking onto new lines
   background-color: transparent; // For `<button>`s
   border: 0; // For `<button>`s
@@ -189,7 +198,7 @@
   &:hover,
   &:focus {
     color: var(--#{$prefix}dropdown-link-hover-color);
-    text-decoration: if($link-hover-decoration == underline, none, null);
+    text-decoration: if(sass($link-hover-decoration == underline): none);
     @include gradient-bg(var(--#{$prefix}dropdown-link-hover-bg));
   }
 
@@ -206,7 +215,7 @@
     pointer-events: none;
     background-color: transparent;
     // Remove CSS gradients if they're enabled
-    background-image: if($enable-gradients, none, null);
+    background-image: if(sass($enable-gradients): none);
   }
 }
 
